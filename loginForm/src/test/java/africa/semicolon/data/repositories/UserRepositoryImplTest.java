@@ -2,6 +2,7 @@ package africa.semicolon.data.repositories;
 
 import africa.semicolon.data.models.User;
 import africa.semicolon.utils.dtos.UserDoesNotExistException;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,6 +15,10 @@ class UserRepositoryImplTest {
         repository = new UserRepositoryImpl();
     }
 
+    @AfterEach
+    public void tearDown(){
+        repository.deleteAll();
+    }
     public User testMethod(){
         User user = new User();
         user.setFirstName("Ozi");
@@ -74,10 +79,17 @@ class UserRepositoryImplTest {
 
     @Test
     void test_deleteAll() {
-
+        testMethod();
+        testMethod();
+        repository.deleteAll();
+        assertEquals(0, repository.findAll().size());
     }
 
     @Test
     void test_findUserById() {
+        User user1 = testMethod();
+        User user2 = testMethod();
+        assertEquals(2, repository.findAll().size());
+        assertEquals(user1, repository.findUserById(1));
     }
 }

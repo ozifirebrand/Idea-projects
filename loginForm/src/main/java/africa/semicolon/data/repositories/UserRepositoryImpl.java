@@ -15,6 +15,7 @@ public class UserRepositoryImpl implements UserRepository{
             user.setUserId(++key);
         }
         database.put(user.getUserId(), user);
+
         return user;
     }
 
@@ -35,11 +36,11 @@ public class UserRepositoryImpl implements UserRepository{
 
     @Override
     public void deleteAll() {
-
+        database.clear();
     }
 
     @Override
-    public User findUserById() {
-        return null;
+    public User findUserById(Integer userId) {
+        return database.get(userId);
     }
 }
