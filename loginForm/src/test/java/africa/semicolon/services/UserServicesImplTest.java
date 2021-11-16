@@ -1,7 +1,9 @@
 package africa.semicolon.services;
 
-import africa.semicolon.utils.dtos.UserRequest;
-import africa.semicolon.utils.dtos.UserResponse;
+import africa.semicolon.data.models.User;
+import africa.semicolon.utils.dtos.requests.UserInputRequest;
+import africa.semicolon.utils.dtos.requests.UserRequest;
+import africa.semicolon.utils.dtos.responses.UserResponse;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,14 +21,14 @@ class UserServicesImplTest {
     public void tearDown() {
     }
 
-    public void helpMethod(){
+    public UserResponse helpMethod(){
         UserRequest request = new UserRequest();
         request.setFirstName("Eno");
         request.setLastName("Amadi");
         request.setPhoneNumber("857393774");
         request.setUsername("Moo");
         request.setPassword("urykejfb");
-        services.createUser(request);
+        return services.createUser(request);
     }
 
     @Test
@@ -62,12 +64,18 @@ class UserServicesImplTest {
         request.setUsername("Moo");
         request.setPassword("urykejfb");
         UserResponse response = services.createUser(request);
-        services.deleteUser(response.getUserId());
+        services.deleteUserById(response.getUserId());
         assertEquals(0, services.findAll().size());
     }
 
     @Test
     public void test_deleteAll() {
+        helpMethod();
+        helpMethod();
+        helpMethod();
+        helpMethod();
+        services.deleteAll();
+        assertEquals(0, services.findAll().size());
     }
 
     @Test
@@ -77,4 +85,26 @@ class UserServicesImplTest {
         helpMethod();
         assertEquals(3, services.findAll().size());
     }
+
+    @Test
+    public void test_deleteAUser(){
+        helpMethod();
+        helpMethod();
+        UserResponse response2 =helpMethod();
+        assertEquals(3, services.findAll().size());
+        services.deleteUser(services.findUserById(response2.getUserId()));
+        assertEquals(2, services.findAll().size());
+    }
+
+//    @Test
+//    public void test_deleteByWhatever(){
+//        helpMethod();
+//        UserInputRequest request = new UserInputRequest();
+//        request.setPassword("urykejfb");
+//        request.setPhoneNumber("857393774");
+//        services.deleteUser(request);
+//        assertEquals(0, services.findAll().size());
+
+//    }
+
 }

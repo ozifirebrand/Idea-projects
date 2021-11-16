@@ -1,8 +1,9 @@
 package africa.semicolon.utils.Mapper;
 
 import africa.semicolon.data.models.User;
-import africa.semicolon.utils.dtos.UserRequest;
-import africa.semicolon.utils.dtos.UserResponse;
+import africa.semicolon.utils.dtos.requests.UserInputRequest;
+import africa.semicolon.utils.dtos.requests.UserRequest;
+import africa.semicolon.utils.dtos.responses.UserResponse;
 
 public class ModelMapper {
 
@@ -13,7 +14,6 @@ public class ModelMapper {
         user.setLastName(request.getLastName());
         user.setFirstName(request.getFirstName());
         user.setUsername(request.getUsername());
-        user.setUserId(request.getUserId());
         return user;
     }
 
@@ -24,5 +24,12 @@ public class ModelMapper {
         response.setLastName(user.getLastName());
         response.setUserId(user.getUserId());
         return response;
+    }
+
+    public static User map(UserInputRequest inputRequest){
+        User user = new User();
+        user.setPassword(inputRequest.getPassword());
+        user.setPhoneNumber(inputRequest.getPhoneNumber());
+        return user;
     }
 }

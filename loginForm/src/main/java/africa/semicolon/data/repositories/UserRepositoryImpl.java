@@ -1,6 +1,7 @@
 package africa.semicolon.data.repositories;
 
 import africa.semicolon.data.models.User;
+import africa.semicolon.utils.dtos.requests.UserInputRequest;
 import africa.semicolon.utils.exceptions.UserDoesNotExistException;
 
 import java.util.*;
@@ -10,8 +11,9 @@ public class UserRepositoryImpl implements UserRepository{
     private Integer key = 0;
     @Override
     public User save(User user) {
-        boolean databaseDoesNotContainKey = !database.containsKey(user.getUserId()) ;
-        if ( databaseDoesNotContainKey ) {
+        int id = user.getUserId();
+        boolean databaseDoesNotContainId = !database.containsKey(id) ;
+        if ( databaseDoesNotContainId ) {
             key +=1;
             user.setUserId(key);
         }
@@ -26,12 +28,16 @@ public class UserRepositoryImpl implements UserRepository{
 
     @Override
     public void deleteById(Integer userId) {
+        validateId(userId);
+        User user = database.get(userId);
+        database.remove(userId, user);
+    }
+
+    private void validateId(Integer userId) {
         boolean userDoesNotExist = !database.containsKey(userId);
         if (userDoesNotExist ){
             throw new UserDoesNotExistException("User does not exist");
         }
-        User user = database.get(userId);
-        database.remove(userId, user);
     }
 
     @Override
@@ -43,4 +49,13 @@ public class UserRepositoryImpl implements UserRepository{
     public User findUserById(Integer userId) {
         return database.get(userId);
     }
+
+//    @Override
+//    public void deleteByRequest(UserInputRequest inputRequest) {
+//        String password = inputRequest.getPassword();
+//        String phoneNumber = inputRequest.getPhoneNumber();
+//        Set<Integer> userKey = database.keySet();
+//
+//        for (User user : database)
+//    }
 }
