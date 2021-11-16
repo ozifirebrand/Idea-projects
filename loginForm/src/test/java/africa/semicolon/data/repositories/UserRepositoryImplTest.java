@@ -1,7 +1,7 @@
 package africa.semicolon.data.repositories;
 
 import africa.semicolon.data.models.User;
-import africa.semicolon.utils.dtos.UserDoesNotExistException;
+import africa.semicolon.utils.exceptions.UserDoesNotExistException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

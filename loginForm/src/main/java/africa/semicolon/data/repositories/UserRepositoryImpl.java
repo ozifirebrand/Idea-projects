@@ -1,7 +1,7 @@
 package africa.semicolon.data.repositories;
 
 import africa.semicolon.data.models.User;
-import africa.semicolon.utils.dtos.UserDoesNotExistException;
+import africa.semicolon.utils.exceptions.UserDoesNotExistException;
 
 import java.util.*;
 
