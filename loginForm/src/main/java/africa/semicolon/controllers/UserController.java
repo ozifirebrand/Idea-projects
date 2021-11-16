@@ -14,7 +14,7 @@ public class UserController {
     private final UserServices services = new UserServicesImpl();
 
     @PostMapping ("/api/createuser")
-    public UserResponse createUser(@RequestBody UserRequest request){
+    public UserResponse register(@RequestBody UserRequest request){
         return services.createUser(request);
     }
 
@@ -26,4 +26,5 @@ public class UserController {
 //    @GetMapping("/api/deleteuser")
 //    public void delete(@RequestBody User user){
 //    }
+    // public UserInputResponse login(@RequestBody UserInputRequest request) { return services.findUserById(request.getUserId()); }
 }
