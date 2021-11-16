@@ -22,6 +22,7 @@ public class ModelMapper {
         response.setFirstName(user.getFirstName());
         response.setUsername(user.getUsername());
         response.setLastName(user.getLastName());
+        response.setUserId(user.getUserId());
         return response;
     }
 }

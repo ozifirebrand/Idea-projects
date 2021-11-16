@@ -55,6 +55,15 @@ class UserServicesImplTest {
 
     @Test
     public void test_deleteUser() {
+        UserRequest request = new UserRequest();
+        request.setFirstName("Eno");
+        request.setLastName("Amadi");
+        request.setPhoneNumber("857393774");
+        request.setUsername("Moo");
+        request.setPassword("urykejfb");
+        UserResponse response = services.createUser(request);
+        services.deleteUser(request.getUserId());
+        assertEquals(0, services.findAll().size());
     }
 
     @Test

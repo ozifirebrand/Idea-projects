@@ -12,10 +12,10 @@ public class UserRepositoryImpl implements UserRepository{
     public User save(User user) {
         boolean databaseDoesNotContainKey = !database.containsKey(user.getUserId()) ;
         if ( databaseDoesNotContainKey ) {
-            user.setUserId(++key);
+            key +=1;
+            user.setUserId(key);
         }
         database.put(user.getUserId(), user);
-
         return user;
     }
 
