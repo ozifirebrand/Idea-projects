@@ -62,7 +62,7 @@ class UserServicesImplTest {
         request.setUsername("Moo");
         request.setPassword("urykejfb");
         UserResponse response = services.createUser(request);
-        services.deleteUser(request.getUserId());
+        services.deleteUser(response.getUserId());
         assertEquals(0, services.findAll().size());
     }
 

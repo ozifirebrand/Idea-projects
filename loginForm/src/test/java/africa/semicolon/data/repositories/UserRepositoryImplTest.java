@@ -57,13 +57,13 @@ class UserRepositoryImplTest {
     }
 
     @Test
-    void test_delete() {
+    void test_deleteById() {
         User user1 = testMethod();
         User user2 = testMethod();
         assertEquals(2, repository.findAll().size());
-        repository.delete(user1);
+        repository.deleteById(user1.getUserId());
         assertEquals(1, repository.findAll().size());
-        repository.delete(user2);
+        repository.deleteById(user2.getUserId());
         assertEquals(0, repository.findAll().size());
     }
 
@@ -72,9 +72,9 @@ class UserRepositoryImplTest {
         User user1 = testMethod();
         testMethod();
         assertEquals(2, repository.findAll().size());
-        repository.delete(user1);
+        repository.deleteById(user1.getUserId());
         assertEquals(1, repository.findAll().size());
-        assertThrows(UserDoesNotExistException.class, ()-> repository.delete(user1));
+        assertThrows(UserDoesNotExistException.class, ()-> repository.deleteById(user1.getUserId()));
     }
 
     @Test
@@ -88,7 +88,7 @@ class UserRepositoryImplTest {
     @Test
     void test_findUserById() {
         User user1 = testMethod();
-        User user2 = testMethod();
+        testMethod();
         assertEquals(2, repository.findAll().size());
         assertEquals(user1, repository.findUserById(1));
     }

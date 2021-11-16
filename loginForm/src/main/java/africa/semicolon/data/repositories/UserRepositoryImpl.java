@@ -25,12 +25,12 @@ public class UserRepositoryImpl implements UserRepository{
     }
 
     @Override
-    public void delete(User user) {
-        Integer userId = user.getUserId();
+    public void deleteById(Integer userId) {
         boolean userDoesNotExist = !database.containsKey(userId);
         if (userDoesNotExist ){
             throw new UserDoesNotExistException("User does not exist");
         }
+        User user = database.get(userId);
         database.remove(userId, user);
     }
 

@@ -16,6 +16,7 @@ public class UserServicesImpl implements UserServices{
     public UserResponse createUser(UserRequest request) {
         User user = ModelMapper.map(request);
         User savedUser = repository.save(user);
+
         return ModelMapper.map(savedUser);
     }
 
@@ -31,8 +32,7 @@ public class UserServicesImpl implements UserServices{
 
     @Override
     public void deleteUser(Integer userId) {
-        User user = repository.findUserById(userId);
-        repository.delete(user);
+        repository.deleteById(userId);
     }
 
     @Override
