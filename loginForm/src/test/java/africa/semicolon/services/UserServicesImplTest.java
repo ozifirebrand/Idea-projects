@@ -19,6 +19,16 @@ class UserServicesImplTest {
     public void tearDown() {
     }
 
+    public void helpMethod(){
+        UserRequest request = new UserRequest();
+        request.setFirstName("Eno");
+        request.setLastName("Amadi");
+        request.setPhoneNumber("857393774");
+        request.setUsername("Moo");
+        request.setPassword("urykejfb");
+        services.createUser(request);
+    }
+
     @Test
     public void test_createUser() {
         UserRequest request = new UserRequest();
@@ -36,7 +46,11 @@ class UserServicesImplTest {
     }
 
     @Test
-    public void test_findUser() {
+    public void test_findUserById() {
+        /*UserResponse response =*/ helpMethod();
+        /*UserResponse response =*/ helpMethod();
+        assertEquals(services.findAll().get(0),services.findUserById(1));
+        assertEquals(services.findAll().get(1),services.findUserById(2));
     }
 
     @Test
@@ -45,5 +59,13 @@ class UserServicesImplTest {
 
     @Test
     public void test_deleteAll() {
+    }
+
+    @Test
+    public void test_findAll(){
+        helpMethod();
+        helpMethod();
+        helpMethod();
+        assertEquals(3, services.findAll().size());
     }
 }
