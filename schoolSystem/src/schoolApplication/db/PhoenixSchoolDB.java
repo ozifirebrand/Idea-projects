@@ -45,4 +45,12 @@ public class PhoenixSchoolDB {
         studentDatabase.put(id, student);
         return student;
     }
+
+    public static Student getStudent(String id){
+        return studentDatabase.get(id);
+    }
+
+    public Student findStudentById(String studentId) {
+        return studentDatabase.get(studentId);
+    }
 }

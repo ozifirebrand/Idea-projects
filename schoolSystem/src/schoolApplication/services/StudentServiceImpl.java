@@ -15,4 +15,9 @@ public class StudentServiceImpl implements StudentService{
     public Student updateStudentInfo(Student aStudent) throws PhoenixStudentException {
         return null;
     }
+
+    @Override
+    public Student findStudent(String studentId) throws PhoenixStudentException {
+        return phoenixSchoolDB.findStudentById(studentId);
+    }
 }

@@ -24,6 +24,4 @@ public class Student extends SchoolUser {
         this.setGender(gender);
         setEmail(email);
     }
-
-
 }
