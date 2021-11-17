@@ -1,11 +1,14 @@
 package schoolApplication.db;
 
+import schoolApplication.enums.Gender;
 import schoolApplication.exceptions.PhoenixClassException;
 import schoolApplication.exceptions.PhoenixStudentException;
 import schoolApplication.models.Student;
 
 import java.util.Map;
 import java.util.TreeMap;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  *

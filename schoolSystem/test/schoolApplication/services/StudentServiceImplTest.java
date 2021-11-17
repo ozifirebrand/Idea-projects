@@ -40,4 +40,17 @@ class StudentServiceImplTest {
         assertEquals(0, PhoenixSchoolDB.findTotalNoOfStudents());
         assertThrows(PhoenixStudentException.class, ()->service.register(null));
     }
+
+    @Test
+    void updateStudent(){
+        Student tife = new Student("Tife", "Olanipekun", Gender.MALE);
+        assertEquals(0, PhoenixSchoolDB.findTotalNoOfStudents());
+        try {
+            tife = service.register(tife);
+        }catch (PhoenixStudentException ex){
+            ex.printStackTrace();
+        }
+        assertEquals(1, PhoenixSchoolDB.findTotalNoOfStudents());
+        assertEquals("PHX1", tife.getId());
+    }
 }
