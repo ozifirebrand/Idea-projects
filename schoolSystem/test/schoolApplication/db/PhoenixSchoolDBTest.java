@@ -1,6 +1,7 @@
 package schoolApplication.db;
 
 import org.junit.jupiter.api.*;
+import schoolApplication.enums.Gender;
 import schoolApplication.exceptions.PhoenixClassException;
 import schoolApplication.models.Student;
 
@@ -22,7 +23,7 @@ class PhoenixSchoolDBTest {
     @Test
     void addStudent() {
         assertTrue(PhoenixSchoolDB.getStudentDatabase().isEmpty());
-        Student tife = new Student("Tife", "Olanipekun");
+        Student tife = new Student("Tife", "Olanipekun", Gender.MALE);
         try {
             phoenixSchoolDB.addStudent(tife);
         }catch (PhoenixClassException ex){

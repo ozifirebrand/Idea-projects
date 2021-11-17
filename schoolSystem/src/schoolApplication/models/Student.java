@@ -12,8 +12,6 @@ public class Student extends SchoolUser {
         setLastName(lastName);
     }
 
-
-
     public Student (String firstName, String lastName, Gender gender){
         this.setFirstName(firstName);
         this.setLastName(lastName);

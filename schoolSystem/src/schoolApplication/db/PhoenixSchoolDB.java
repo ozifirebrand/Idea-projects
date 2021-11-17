@@ -1,6 +1,7 @@
 package schoolApplication.db;
 
 import schoolApplication.exceptions.PhoenixClassException;
+import schoolApplication.exceptions.PhoenixStudentException;
 import schoolApplication.models.Student;
 
 import java.util.Map;
@@ -11,7 +12,7 @@ import java.util.TreeMap;
  */
 public class PhoenixSchoolDB {
     private static Map<String, Student> studentDatabase = new TreeMap<>();
-    private int totalNoOfStudents=0;
+    private static int totalNoOfStudents=0;
 
     public static Map<String, Student> getStudentDatabase() {
         return studentDatabase;
@@ -21,6 +22,9 @@ public class PhoenixSchoolDB {
         studentDatabase = database;
     }
 
+    public static int findTotalNoOfStudents(){
+        return totalNoOfStudents;
+    }
     private String generateStudentId(){
         StringBuilder id = new StringBuilder("PHX");
         totalNoOfStudents++;
@@ -29,10 +33,13 @@ public class PhoenixSchoolDB {
     }
 
 
-    public void addStudent(Student student ) throws PhoenixClassException{
+    public Student addStudent(Student student ) throws PhoenixStudentException {
         if ( student== null ){
-            throw new PhoenixClassException("User is empty");
+            throw new PhoenixStudentException("User is empty");
         }
-        studentDatabase.put(generateStudentId(), student);
+        student.setId(generateStudentId());
+        String id = student.getId();
+        studentDatabase.put(id, student);
+        return student;
     }
 }
