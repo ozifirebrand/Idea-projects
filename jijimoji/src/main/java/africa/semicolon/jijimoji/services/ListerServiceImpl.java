@@ -21,6 +21,7 @@ public class ListerServiceImpl implements ListerService {
         if ( optionalLister.isPresent()) throw new DuplicateEmailException(request.getEmail()+ "Duplicate email");
 
         Lister lister = ModelMapper.map(request);
-        return ModelMapper.map(lister);
+        Lister savedLister = listerRepository.save(lister);
+        return ModelMapper.map(savedLister);
     }
 }
