@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ListerController {
-    @Autowired
     private ListerService listerService;
 
     @PostMapping("/api/lister")
