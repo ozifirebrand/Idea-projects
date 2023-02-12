@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class LinkedList {
     private Node node;
 
@@ -11,6 +14,14 @@ public class LinkedList {
         node.nextAddress= head;
         head= node;
         return head.data;
+    }
+    public static List<Integer> printAll(Node head){
+        List<Integer> lists= new ArrayList<>();
+        while (head!=null){
+            lists.add(head.data);
+            head = head.nextAddress;
+        }
+        return lists;
     }
 
     public static void main(String[] args) {
@@ -28,6 +39,7 @@ public class LinkedList {
 
         int newData = 20;
         System.out.println(push(head, newData));
+        System.out.println(printAll(head));
     }
 
 
