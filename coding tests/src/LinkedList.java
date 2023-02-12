@@ -2,8 +2,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class LinkedList {
-    private Node node;
-
     static class Node{
         int data;
         Node nextAddress;
