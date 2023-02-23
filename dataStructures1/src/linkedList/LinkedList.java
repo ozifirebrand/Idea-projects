@@ -1,3 +1,5 @@
+package linkedList;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +23,30 @@ public class LinkedList {
         }
         return lists;
     }
+
+    public static LinkedList addTwoNumbers(LinkedList a, LinkedList b){
+
+        /*
+        512489     4562         986869
+        984215     2654         968689
+
+
+
+
+        UNDERSTANDING THE PROBLEM
+        there's a linked list
+        The linked lists have their nodes in reverse order to create an integer
+        The integers obtained are summed to and returned
+
+        TACKLING THE PROBLEM
+        Create two arrays of integers
+        For each array, push each element of one linked list into it
+        Afterwards, add the
+         */
+        return null;
+    }
+
+
 
     public static void main(String[] args) {
         Node head = new Node();
